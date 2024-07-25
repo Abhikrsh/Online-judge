@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"; // Import CSS file
+import { FaUser , FaLock , FaSkull} from "react-icons/fa";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -22,7 +23,10 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/auth/api/login/", formData);
+      const response = await axios.post(
+        "http://localhost:8000/auth/api/login/",
+        formData
+      );
       const { access } = response.data.tokens;
       localStorage.setItem("accessToken", access);
       console.log("Access Token:", access);
@@ -46,38 +50,54 @@ const LoginForm = () => {
       }
     }
   };
-  
 
   return (
-    <div className="Login-form">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-      {error && <p className="error">{error}</p>}
-      <button className="register-button" onClick={handleRegisterButtonClick}>
-        Register
-      </button>
+    <div className="wrapper">
+      <div className="heading">
+        <h1 className="title-h1">
+          Login to{" "}
+          <span class="title-span">
+            Name
+          </span>
+        </h1>
+      </div>
+      <div className="Login-form">
+       <FaSkull style={{ fontSize: '50px' }}/>
+        <form className="lgn-frm" onSubmit={handleSubmit}>
+          <label>
+          <FaUser style={{ fontSize: '28px' }}/>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
+          <FaLock style={{ fontSize: '28px' }}/>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <button className="login-btn" type="submit">
+            Login
+          </button>
+        </form>
+        {error && <p className="error">{error}</p>}
+        <div className="question">
+          <p>Don't have an account?</p>
+          <a className="register-button" onClick={handleRegisterButtonClick}>
+            Register
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

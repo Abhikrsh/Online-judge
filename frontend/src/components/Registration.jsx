@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './Registration.css'; // Import CSS file
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./Registration.css"; // Import CSS file
+import { FaUser, FaLock, FaCheck , FaSkull } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [error, setError] = useState(""); // For general error handling
@@ -24,7 +26,7 @@ const RegistrationForm = () => {
 
     // Basic client-side validation
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
@@ -36,9 +38,8 @@ const RegistrationForm = () => {
       );
 
       // Registration successful
-      alert('Registration successful!');
+      alert("Registration successful!");
       navigate("/"); // Redirect to login page
-
     } catch (error) {
       // Handle specific errors from the server
       if (error.response && error.response.data) {
@@ -46,56 +47,69 @@ const RegistrationForm = () => {
       } else if (error.message) {
         setError(error.message); // Handle other network or unexpected errors
       } else {
-        setError('Unknown error occurred'); // Fallback error message
+        setError("Unknown error occurred"); // Fallback error message
       }
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        {error && <p className="error-message">{error}</p>} {/* Display general error message */}
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
+    <div className="wrapper">
+      <div className="register-form">
+      <FaSkull style={{ fontSize: '50px' }}/>
+        <form className="reg-frm" onSubmit={handleSubmit}>
+          <div className="fill">
+            {error && <p className="error-message">{error}</p>}
+            <FaUser style={{ fontSize: '28px' }} />
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="fill">
+            <MdEmail style={{ fontSize: '28px' }} />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="fill">
+            <FaLock style={{ fontSize: '28px' }} />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="fill">
+            <FaCheck style={{ fontSize: '28px' }} />
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button className="Reg-btn" type="submit">Register</button>
+        </form>
+        <div className="question">
+          <p>Already have an account?</p>
+          <a className="login-msg" onClick={() => navigate("/")}>Login</a>
+        </div>
       </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Confirm Password:</label>
-        <input
-          type="password"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <button type="submit">Register</button>
-    </form>
+    </div>
   );
 };
 

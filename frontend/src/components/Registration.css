@@ -1,0 +1,61 @@
+.wrapper{
+
+    height: 97.5vh;
+    width: 98vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(247, 250, 255);
+  
+  
+  }
+
+  .register-form{
+    padding-top: 20px;
+    width: 350px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+  }
+
+  .reg-frm{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .fill{
+    width: 310px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .question{
+    margin-top: -15px;
+  }
+
+  .Reg-btn{
+    font-family: "Poppins", sans-serif;
+    padding: 4px;
+    background-color: #4070f4;
+    border: none;
+    width: 230px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight:100 ;
+    margin-top: 8px;
+  }
