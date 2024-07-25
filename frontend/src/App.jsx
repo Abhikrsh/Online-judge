@@ -6,8 +6,8 @@ import RegistrationForm from './components/Registration';
 
 const App = () => {
   return (
-    <Router>
-        <Routes>
+    <Router >
+        <Routes >
           <Route path="/" element={<LoginForm />} />
           <Route path="/register" element={<RegistrationForm/>} />
           <Route path="/ProblemList" element={<RegistrationForm/>} />
