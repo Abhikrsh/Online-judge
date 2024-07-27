@@ -22,7 +22,7 @@ class UserLogoutAPIView(APIView):
     permission_classes=[]
     def post(self,request):
         try:
-            refresh_token = request.data["refresh"]
+            refresh_token = request.data["refresh_token"]
             print(refresh_token)
             token = RefreshToken(refresh_token)
             token.blacklist()

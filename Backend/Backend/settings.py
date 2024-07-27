@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "accounts",
+    "main", 
     "corsheaders",
     "rest_framework_simplejwt",
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 
@@ -143,3 +145,6 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+SIMPLE_JWT = {
+    'BLACKLIST_AFTER_ROTATION': True,  # Ensure this is set to enable blacklisting
+}
