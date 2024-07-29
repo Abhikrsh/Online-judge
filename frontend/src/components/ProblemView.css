@@ -1,0 +1,119 @@
+/* SplitPane.css */
+.Resizer {
+    background: #000;
+    opacity: 0.2;
+    z-index: 1;
+    box-sizing: border-box;
+    background-clip: padding;
+
+  }
+  
+  .Resizer.horizontal {
+    height: 11px;
+    /* margin: -5px 0; */
+    border-top: 5px solid rgba(255, 255, 255, 0);
+    border-bottom: 5px solid rgba(255, 255, 255, 0);
+    cursor: row-resize;
+    width: 100%;
+  }
+  
+  .Resizer.horizontal:hover {
+    border-top: 5px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .Resizer.vertical {
+    width: 4px;
+    /* margin: -5px -5px; */
+    border-left: 5px solid rgba(255, 255, 255, 0);
+    border-right: 5px solid rgba(255, 255, 255, 0);
+    cursor: col-resize;
+    height: 100%;
+  }
+  
+  .Resizer.vertical:hover {
+    border-left: 5px solid rgba(0, 0, 0, 0.5);
+    border-right: 5px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .Resizer.disabled {
+    cursor: not-allowed;
+  }
+  
+  .Resizer.disabled:hover {
+    border-color: transparent;
+  }
+
+  
+  .code{
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    padding-left: 10px;
+ 
+
+  }
+
+  .problem{
+ 
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .problem-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  
+
+  
+.lower-section,
+.upper-section {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;  
+  color: rgba(#2980b9, 0.5);
+
+
+} 
+.upper-section {
+  padding-top: 28px;
+  justify-content: center;
+  min-height: 11vh;
+  align-items: center;
+  background: #a7a9e0;
+}
+
+.lower-section{
+ padding-top: 30px ;
+  min-height: 90vh;
+  padding-left: 10px;
+  padding-right: 10px;
+  background:  #eeedff;
+}
+.section-divider {
+  position: relative;
+}
+.section-divider:before {
+      content: ""; 
+      width: 3.5rem;
+      height: 3.5rem;
+      background: #a7a9e0;
+      border-radius: 100%;
+      position: absolute;
+      top: -2.10rem;
+      left: calc(50% - 1.80rem);
+      color: rgba(#2980b9, 0.5);
+      line-height: 6rem;
+      text-indent: 1.75rem;
+      font-size: 3rem;
+    }
+
+ 

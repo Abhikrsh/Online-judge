@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import CodeForm from './CodeForm';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import CodeForm from "./CodeForm";
+import SplitPane from "react-split-pane";
+import "./ProblemView.css";
+import Navbar from "./Navbar";
 
 const ProblemDetail = () => {
   const { id } = useParams();
@@ -11,7 +14,7 @@ const ProblemDetail = () => {
 
   useEffect(() => {
     const fetchProblem = async () => {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
       if (!token) {
         setError("No access token found. Please log in.");
         setLoading(false);
@@ -19,15 +22,20 @@ const ProblemDetail = () => {
       }
 
       try {
-        const response = await axios.get(`http://localhost:8000/main/problems/${id}/`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
+        const response = await axios.get(
+          `http://localhost:8000/main/problems/${id}/`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        });
+        );
         setProblem(response.data);
       } catch (error) {
         console.error("There was an error fetching the problem!", error);
-        setError("Failed to fetch problem. Please make sure you are logged in.");
+        setError(
+          "Failed to fetch problem. Please make sure you are logged in."
+        );
       } finally {
         setLoading(false);
       }
@@ -46,9 +54,20 @@ const ProblemDetail = () => {
 
   return (
     <div>
-      <h1>{problem.title}</h1>
-      <p>{problem.statement}</p>
-      <CodeForm pid={id} />
+      <Navbar />
+    <SplitPane split="vertical" minSize={50} defaultSize= "50%">
+      <div className="problem">
+        <div className="problem-title upper-section">
+          <h3>{problem.title}</h3>
+        </div>
+        <div className="problem-desc lower-section section-divider">
+          <p>{problem.statement}</p>
+        </div>
+      </div>
+      <div className="code">
+        <CodeForm pid={id} />
+      </div>
+    </SplitPane>
     </div>
   );
 };

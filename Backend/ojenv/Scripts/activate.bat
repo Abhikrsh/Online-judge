@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\abhic\OneDrive - iitr.ac.in\Desktop\Oj-project\ojenv
+set VIRTUAL_ENV=C:\Users\pheon\OneDrive\Desktop\Online-judge\backend\ojenv
 
 if not defined PROMPT set PROMPT=$P$G
 

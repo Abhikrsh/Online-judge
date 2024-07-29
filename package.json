@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "codemirror": "^5.65.17",
+    "react-codemirror2": "^8.0.0",
+    "react-split-pane": "^0.1.92"
+  }
+}

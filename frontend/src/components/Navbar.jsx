@@ -5,7 +5,8 @@ import './Navbar.css'; // Optional: for custom styling
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <ul>
+      <h3>Logo</h3>
+      <ul className='nav-cont'>
         <li><Link to="/ProblemsList">Problems</Link></li>
         <li><Link to="/Leaderboard">Leaderboard</Link></li>
         <li><Link to="/Status">Status</Link></li>
